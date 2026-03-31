@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
-import Dashboard from './components/Dashboard'
+import Dashboard from '@/pages/Dashboard'
 
 const RootLayout = () => (
   <div className="app-root">
