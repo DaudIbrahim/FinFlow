@@ -1,8 +1,8 @@
-import type { Transaction } from "@/types";
+import type { ITransaction } from "@/types";
 import StatusBadge from "./StatusBadge";
 
 interface TransactionRowProps {
-  transaction: Transaction;
+  transaction: ITransaction;
 }
 
 const formatCurrency = (amount: number) =>

@@ -12,7 +12,7 @@ export type TransactionCategory =
 
 export type TransactionStatus = "completed" | "pending" | "failed";
 
-export interface Transaction {
+export interface ITransaction {
   id: string;
   description: string;
   amount: number;

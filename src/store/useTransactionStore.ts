@@ -1,10 +1,10 @@
 import { create } from 'zustand'
-import type { Transaction } from '../types'
+import type { ITransaction } from '../types'
 import { mockTransactions } from '../data/mockTransactions'
 
 interface TransactionState {
-  transactions: Transaction[]
-  addTransaction: (transaction: Transaction) => void
+  transactions: ITransaction[]
+  addTransaction: (transaction: ITransaction) => void
 }
 
 export const useTransactionStore = create<TransactionState>((set) => ({

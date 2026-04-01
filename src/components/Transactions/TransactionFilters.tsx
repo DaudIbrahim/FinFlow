@@ -10,24 +10,16 @@ import {
 import { Search, X, ArrowUpDown } from "lucide-react";
 import type { FilterState } from "@/hooks/useFilteredTransactions";
 import type { TransactionCategory, TransactionStatus } from "@/types";
+import { TRANSACTION_CATEGORIES, TRANSACTION_STATUSES } from "@/constants";
 
 const CATEGORIES: (TransactionCategory | "All")[] = [
   "All",
-  "Food",
-  "Transport",
-  "Utilities",
-  "Entertainment",
-  "Health",
-  "Shopping",
-  "Income",
-  "Other",
+  ...TRANSACTION_CATEGORIES,
 ];
 
 const STATUSES: (TransactionStatus | "All")[] = [
   "All",
-  "completed",
-  "pending",
-  "failed",
+  ...TRANSACTION_STATUSES,
 ];
 
 interface TransactionFiltersProps {

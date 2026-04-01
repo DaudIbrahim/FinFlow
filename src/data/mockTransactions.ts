@@ -1,6 +1,6 @@
-import type { Transaction } from '../types'
+import type { ITransaction } from '../types'
 
-export const mockTransactions: Transaction[] = [
+export const mockTransactions: ITransaction[] = [
   {
     id: 'tx-001',
     description: 'Coffee and breakfast',
