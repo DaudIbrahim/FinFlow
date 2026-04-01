@@ -1,3 +1,4 @@
+import SpendingTrendChart from "@/components/Charts/SpendingTrendChart";
 import { useTransactionSummary } from "@/hooks/useTransactionSummary";
 
 const Dashboard = () => {
@@ -18,6 +19,8 @@ const Dashboard = () => {
         <p>
           <strong>Total Expense:</strong> ${totalExpenses.toFixed(2)}
         </p>
+
+        <SpendingTrendChart />
       </div>
     </div>
   );
