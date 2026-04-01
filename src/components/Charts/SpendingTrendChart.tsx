@@ -10,13 +10,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp } from "lucide-react";
 import { useSpendingTrend } from "@/hooks/useSpendingTrend";
-
-const formatBDT = (value: number) =>
-  new Intl.NumberFormat("en-BD", {
-    style: "currency",
-    currency: "BDT",
-    maximumFractionDigits: 0,
-  }).format(value);
+import { formatBDT } from "@/utils";
 
 const CustomTooltip = ({
   active,

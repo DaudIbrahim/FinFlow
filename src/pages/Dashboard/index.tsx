@@ -1,26 +1,30 @@
+import AddTransactionModal from "@/components/AddTransaction/AddTransactionModal";
 import SpendingTrendChart from "@/components/Charts/SpendingTrendChart";
-import { useTransactionSummary } from "@/hooks/useTransactionSummary";
+import { Wallet } from "lucide-react";
+import TransactionList from "@/components/Transactions/TransactionList";
+import SummaryCards from "@/components/SummaryCards/SummaryCards";
 
 const Dashboard = () => {
-  const { totalBalance, totalExpenses } = useTransactionSummary();
-
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-3xl font-semibold">Dashboard</h1>
-        <p className="mt-2 text-sm text-slate-500">
-          FinFlow Dashboard placeholder.
-        </p>
+    <div className="min-h-screen bg-slate-50 p-4 sm:p-6">
+      <div className="max-w-4xl mx-auto flex flex-col gap-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Wallet className="w-5 h-5 text-emerald-500" />
+            <h1 className="text-lg font-semibold text-slate-800">FinFlow</h1>
+          </div>
+          <AddTransactionModal />
+        </div>
 
-        <p>
-          <strong>Total Balance:</strong> ${totalBalance.toFixed(2)}
-        </p>
+        {/* Summary Cards */}
+        <SummaryCards />
 
-        <p>
-          <strong>Total Expense:</strong> ${totalExpenses.toFixed(2)}
-        </p>
-
+        {/* Spending Trend Chart */}
         <SpendingTrendChart />
+
+        {/* Transaction List — scrollable box */}
+        <TransactionList />
       </div>
     </div>
   );

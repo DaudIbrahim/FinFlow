@@ -1,16 +1,10 @@
 import type { ITransaction } from "@/types";
 import StatusBadge from "./StatusBadge";
+import { formatBDT } from "@/utils";
 
 interface TransactionRowProps {
   transaction: ITransaction;
 }
-
-const formatCurrency = (amount: number) =>
-  new Intl.NumberFormat("en-BD", {
-    style: "currency",
-    currency: "BDT",
-    maximumFractionDigits: 0,
-  }).format(amount);
 
 const formatDate = (dateStr: string) =>
   new Date(dateStr).toLocaleDateString("en-GB", {
@@ -50,7 +44,7 @@ const TransactionRow = ({ transaction }: TransactionRowProps) => {
           }`}
         >
           {type === "income" ? "+" : "-"}
-          {formatCurrency(amount)}
+          {formatBDT(amount)}
         </span>
         {/* Mobile — show date + status inline */}
         <span className="text-xs text-slate-400 sm:hidden">
