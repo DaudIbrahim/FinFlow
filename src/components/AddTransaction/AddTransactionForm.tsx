@@ -2,6 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransactionStore } from "@/store/useTransactionStore";
 import { z } from "zod";
+import { useEffect } from "react";
 
 import {
   TRANSACTION_TYPES,
@@ -58,6 +59,8 @@ export default function AddTransactionForm({
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
+    setValue,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -69,6 +72,18 @@ export default function AddTransactionForm({
       status: "completed",
     },
   });
+
+  const selectedType = watch("type");
+  const selectedCategory = watch("category");
+
+  // Minimal change: adjust category automatically when type changes
+  useEffect(() => {
+    if (selectedType === "income") {
+      setValue("category", "Income");
+    } else if (selectedType === "expense" && selectedCategory === "Income") {
+      setValue("category", "Food");
+    }
+  }, [selectedType, setValue, selectedCategory]);
 
   const onSubmit = (values: FormValues) => {
     const newTransaction: ITransaction = {
@@ -169,7 +184,15 @@ export default function AddTransactionForm({
                   </SelectTrigger>
                   <SelectContent>
                     {TRANSACTION_CATEGORIES.map((c) => (
-                      <SelectItem key={c} value={c}>
+                      <SelectItem
+                        key={c}
+                        value={c}
+                        disabled={
+                          selectedType === "income"
+                            ? c !== "Income"
+                            : c === "Income"
+                        }
+                      >
                         {c}
                       </SelectItem>
                     ))}
