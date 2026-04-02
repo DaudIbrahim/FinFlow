@@ -3,11 +3,12 @@ import SpendingTrendChart from "@/components/Charts/SpendingTrendChart";
 import { Wallet } from "lucide-react";
 import TransactionList from "@/components/Transactions/TransactionList";
 import SummaryCards from "@/components/SummaryCards/SummaryCards";
+import CategoryBreakdownChart from "@/components/Charts/CategoryBreakdownChart";
 
 const Dashboard = () => {
   return (
     <div className="min-h-screen bg-slate-50 p-4 sm:p-6">
-      <div className="max-w-4xl mx-auto flex flex-col gap-6">
+      <div className="max-w-5xl mx-auto flex flex-col gap-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -20,10 +21,13 @@ const Dashboard = () => {
         {/* Summary Cards */}
         <SummaryCards />
 
-        {/* Spending Trend Chart */}
-        <SpendingTrendChart />
+        {/* Charts */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <SpendingTrendChart />
+          <CategoryBreakdownChart />
+        </div>
 
-        {/* Transaction List — scrollable box */}
+        {/* Transaction List */}
         <TransactionList />
       </div>
     </div>
